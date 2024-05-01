@@ -9440,7 +9440,13 @@ bool SpecialMemberDeletionInfo::shouldDeleteForSubobjectCall(
   CXXMethodDecl *Decl = SMOR.getMethod();
   FieldDecl *Field = Subobj.dyn_cast<FieldDecl*>();
 
-  int DiagKind;
+  enum {
+    NoDecl,
+    DeletedDecl,
+    MultipleDecl,
+    InaccessibleDecl,
+    NonTrivialDecl
+  } DiagKind;
 
   if (SMOR.getKind() == Sema::SpecialMemberOverloadResult::NoMemberOrDeleted) {
     if (CSM == Sema::CXXDefaultConstructor && Field &&
@@ -9454,11 +9460,11 @@ bool SpecialMemberDeletionInfo::shouldDeleteForSubobjectCall(
       if (RD->hasInClassInitializer())
         return false;
     }
-    DiagKind = !Decl ? 0 : 1;
+    DiagKind = !Decl ? NoDecl : DeletedDecl;
   } else if (SMOR.getKind() == Sema::SpecialMemberOverloadResult::Ambiguous)
-    DiagKind = 2;
+    DiagKind = MultipleDecl;
   else if (!isAccessible(Subobj, Decl))
-    DiagKind = 3;
+    DiagKind = InaccessibleDecl;
   else if (!IsDtorCallInCtor && Field && Field->getParent()->isUnion() &&
            !Decl->isTrivial()) {
     // A member of a union must have a trivial corresponding special member.
@@ -9476,7 +9482,7 @@ bool SpecialMemberDeletionInfo::shouldDeleteForSubobjectCall(
       if (RD->hasInClassInitializer())
         return false;
     }
-    DiagKind = 4;
+    DiagKind = NonTrivialDecl;
   } else {
     return false;
   }
@@ -9496,9 +9502,9 @@ bool SpecialMemberDeletionInfo::shouldDeleteForSubobjectCall(
           << /*IsObjCPtr*/false;
     }
 
-    if (DiagKind == 1)
+    if (DiagKind == DeletedDecl)
       S.NoteDeletedFunction(Decl);
-    // FIXME: Explain inaccessibility if DiagKind == 3.
+    // FIXME: Explain inaccessibility if DiagKind == InaccessibleDecl.
   }
 
   return true;
