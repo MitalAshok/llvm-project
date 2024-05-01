@@ -309,7 +309,7 @@ void funct_ptr_params(double (*ffffff)(int, int), int (*gggggg)(int, int));
 double ffffff(int a, int b) { return 0; }
 double gggggg(int a, int b) { return 0; }
 
-void funtionc_ptr_params_swap() {
+void function_ptr_params_swap() {
   funct_ptr_params(gggggg, ffffff);
   // CHECK-MESSAGES: :[[@LINE-1]]:3: warning: 1st argument 'gggggg' (passed to 'ffffff') looks like it might be swapped with the 2nd, 'ffffff' (passed to 'gggggg')
 }

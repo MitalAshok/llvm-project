@@ -10,7 +10,7 @@
 ;     return a;\
 ;   return a * b;
 ; }
-; Please note funtion name is defined as <PARAM>_<LHS>_<RHS>. Take ll_a_op_b__1
+; Please note function name is defined as <PARAM>_<LHS>_<RHS>. Take ll_a_op_b__1
 ; for example. ll is PARAM, a_op_b (i.e., a << b) is LHS, _1 (i.e., -1) is RHS.
 
 target datalayout = "e-m:e-i64:64-n32:64"

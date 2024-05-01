@@ -149,7 +149,7 @@ TEST(GSYMTest, TestFunctionInfo) {
   EXPECT_LT(FISymtab, FIWithInlines);
 
   // Test that if we have a function info with inline entries and one more
-  // inline entries that the one with fewer inline functins is less than the
+  // inline entries that the one with fewer inline functions is less than the
   // one with more.
   FunctionInfo FIWithMoreInlines = FIWithInlines;
   FIWithMoreInlines.Inline->Children.push_back(InlineInfo());
@@ -4709,7 +4709,7 @@ TEST(GSYMTest, TestHandlingOfInvalidFileIndexes) {
 }
 
 TEST(GSYMTest, TestLookupsOfOverlappingAndUnequalRanges) {
-  // Test that llvm-gsymutil lookup the correct funtion info when address
+  // Test that llvm-gsymutil lookup the correct function info when address
   // ranges overlap. When functions overlap we always want to pick the first
   // function info when symbolicating if there are multiple entries with the
   // same address. Previous to this fix we would just binary search the address

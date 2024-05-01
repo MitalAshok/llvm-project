@@ -120,7 +120,7 @@ static llvm::Error parse(DataExtractor &Data, uint64_t BaseAddr,
 }
 
 llvm::Error LineTable::encode(FileWriter &Out, uint64_t BaseAddr) const {
-  // Users must verify the LineTable is valid prior to calling this funtion.
+  // Users must verify the LineTable is valid prior to calling this function.
   // We don't want to emit any LineTable objects if they are not valid since
   // it will waste space in the GSYM file.
   if (!isValid())

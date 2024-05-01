@@ -250,7 +250,7 @@ getParallelComputeFunctionType(scf::ParallelOp op, PatternRewriter &rewriter) {
   return {rewriter.getFunctionType(inputs, TypeRange()), capturesVector};
 }
 
-// Create a parallel compute fuction from the parallel operation.
+// Create a parallel compute function from the parallel operation.
 static ParallelComputeFunction createParallelComputeFunction(
     scf::ParallelOp op, const ParallelComputeFunctionBounds &bounds,
     unsigned numBlockAlignedInnerLoops, PatternRewriter &rewriter) {

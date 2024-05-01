@@ -364,7 +364,7 @@ public:
   /// The format of the textual machine pipeline is a comma separated list of
   /// machine pass names:
   ///
-  ///   machine-funciton-pass,machine-module-pass,...
+  ///   machine-function-pass,machine-module-pass,...
   ///
   /// There is no need to specify the pass nesting, and this function
   /// currently cannot handle the pass nesting.

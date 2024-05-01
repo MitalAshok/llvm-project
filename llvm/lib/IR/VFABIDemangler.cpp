@@ -518,7 +518,7 @@ VFParamKind VFABI::getVFParamKindFromString(const StringRef Token) {
     return ParamKind;
 
   // This function should never be invoked with an invalid input.
-  llvm_unreachable("This fuction should be invoken only on parameters"
+  llvm_unreachable("This function should be invoken only on parameters"
                    " that have a textual representation in the mangled name"
                    " of the Vector Function ABI");
 }

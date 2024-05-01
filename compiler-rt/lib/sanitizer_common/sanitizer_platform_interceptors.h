@@ -614,7 +614,7 @@
 // #endif
 //
 // This "feature" is useful for downstream users who do not want some of
-// their libc funtions to be intercepted. They can selectively disable
+// their libc functions to be intercepted. They can selectively disable
 // interception of those functions.
 #ifdef SANITIZER_OVERRIDE_INTERCEPTORS
 #include <sanitizer_intercept_overriders.h>

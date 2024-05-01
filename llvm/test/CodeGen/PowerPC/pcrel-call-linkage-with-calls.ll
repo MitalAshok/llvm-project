@@ -12,7 +12,7 @@
 @externGlobalVar = external local_unnamed_addr global i32, align 4
 @indirectCall = common dso_local local_unnamed_addr global ptr null, align 8
 
-; This funcion needs to remain as noinline.
+; This function needs to remain as noinline.
 ; The compiler needs to know this function is local but must be forced to call
 ; it. The only thing we really need to check here is that st_other=0 and
 ; so we make sure that there is no .localentry.

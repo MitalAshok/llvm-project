@@ -3,7 +3,7 @@
 
 #ifndef NO_ERRORS
 namespace bullet3 {
-  // the built-in candidates include all of the candidate operator fnuctions
+  // the built-in candidates include all of the candidate operator functions
   // [...] that, compared to the given operator
 
   // - do not have the same parameter-type-list as any non-member candidate

@@ -1,5 +1,5 @@
 """
-Test that we can call C++ template fucntions.
+Test that we can call C++ template functions.
 """
 import lldb
 from lldbsuite.test.decorators import *

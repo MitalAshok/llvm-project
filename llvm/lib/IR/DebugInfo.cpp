@@ -2437,7 +2437,7 @@ PreservedAnalyses AssignmentTrackingPass::run(Function &F,
     return PreservedAnalyses::all();
 
   // Record that this module uses assignment tracking. It doesn't matter that
-  // some functons in the module may not use it - the debug info in those
+  // some functions in the module may not use it - the debug info in those
   // functions will still be handled properly.
   setAssignmentTrackingModuleFlag(*F.getParent());
 

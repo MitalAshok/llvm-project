@@ -49,7 +49,7 @@ InterpFrame::InterpFrame(InterpState &S, const Function *Func, CodePtr RetPC,
   // As per our calling convention, the this pointer is
   // part of the ArgSize.
   // If the function has RVO, the RVO pointer is first.
-  // If the fuction has a This pointer, that one is next.
+  // If the function has a This pointer, that one is next.
   // Then follow the actual arguments (but those are handled
   // in getParamPointer()).
   if (Func->hasRVO())

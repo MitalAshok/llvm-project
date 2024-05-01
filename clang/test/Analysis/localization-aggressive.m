@@ -78,7 +78,7 @@ takesLocalizedString(NSString *str
 // Test cases begin here
 @implementation LocalizationTestSuite
 
-// A C-Funtion that returns a localized string because it has the
+// A C-Function that returns a localized string because it has the
 // "returns_localized_nsstring" annotation
 NSString *ForceLocalized(NSString *str) { return str; }
 // An ObjC method that returns a localized string because it has the

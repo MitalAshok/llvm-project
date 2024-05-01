@@ -784,7 +784,7 @@ struct FooWithMemberSize {
 };
 
 TEST(RangeSizeTest, MemberSize) {
-  // Make sure that member `.size()` is preferred over the free fuction and
+  // Make sure that member `.size()` is preferred over the free function and
   // `std::distance`.
   FooWithMemberSize container;
   EXPECT_EQ(range_size(container), 42u);

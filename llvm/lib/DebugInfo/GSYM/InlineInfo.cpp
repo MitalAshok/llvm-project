@@ -227,7 +227,7 @@ llvm::Expected<InlineInfo> InlineInfo::decode(DataExtractor &Data,
 }
 
 llvm::Error InlineInfo::encode(FileWriter &O, uint64_t BaseAddr) const {
-  // Users must verify the InlineInfo is valid prior to calling this funtion.
+  // Users must verify the InlineInfo is valid prior to calling this function.
   // We don't want to emit any InlineInfo objects if they are not valid since
   // it will waste space in the GSYM file.
   if (!isValid())

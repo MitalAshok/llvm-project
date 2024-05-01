@@ -396,7 +396,7 @@ void NVPTXLowerArgs::markPointerAsGlobal(Value *Ptr) {
   // Deciding where to emit the addrspacecast pair.
   BasicBlock::iterator InsertPt;
   if (Argument *Arg = dyn_cast<Argument>(Ptr)) {
-    // Insert at the functon entry if Ptr is an argument.
+    // Insert at the function entry if Ptr is an argument.
     InsertPt = Arg->getParent()->getEntryBlock().begin();
   } else {
     // Insert right after Ptr if Ptr is an instruction.

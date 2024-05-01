@@ -103,7 +103,7 @@ void passthrough2(int A, int B) { // NO-WARN: Passed to same index of same funct
   f(B);
 }
 
-void passthrough3(int A, int B) { // NO-WARN: Passed to same index of same funtion.
+void passthrough3(int A, int B) { // NO-WARN: Passed to same index of same function.
   h(1, A);
   h(1, B);
 }

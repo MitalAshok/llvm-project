@@ -74,7 +74,7 @@ public:
   using FunctionT = typename SSATraits::FunctionT;
 
   // A dominator tree provides the dominance relation between basic blocks in
-  // a given funciton.
+  // a given function.
   using DominatorTreeT = DominatorTreeBase<BlockT, false>;
 
   GenericSSAContext() = default;

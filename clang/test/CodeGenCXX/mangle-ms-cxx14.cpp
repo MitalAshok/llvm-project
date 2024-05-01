@@ -27,7 +27,7 @@ auto LambdaWithLocalType = [] {
 auto ValueFromLambdaWithLocalType = LambdaWithLocalType();
 
 template <typename T>
-auto TemplateFuncionWithLocalLambda(T) {
+auto TemplateFunctionWithLocalLambda(T) {
   auto LocalLambdaWithLocalType = []() {
     struct LocalType {};
     return LocalType{};
@@ -35,13 +35,13 @@ auto TemplateFuncionWithLocalLambda(T) {
   return LocalLambdaWithLocalType();
 }
 
-// MSVC2013-DAG: "?ValueFromTemplateFuncionWithLocalLambda@@3ULocalType@?2???R<lambda_1>@?0???$TemplateFuncionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?3@XZ@A"
-// MSVC2013-DAG: "?ValueFromTemplateFuncionWithLocalLambda@@3ULocalType@?2???R<lambda_1>@?0???$TemplateFuncionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?3@XZ@A"
-// MSVC2015-DAG: "?ValueFromTemplateFuncionWithLocalLambda@@3ULocalType@?1???R<lambda_1>@?0???$TemplateFuncionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?3@XZ@A"
-// MSVC2015-DAG: "?ValueFromTemplateFuncionWithLocalLambda@@3ULocalType@?1???R<lambda_1>@?0???$TemplateFuncionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?3@XZ@A"
-// CHECK-DAG: "??$TemplateFuncionWithLocalLambda@H@@YA?A?<auto>@@H@Z"
-// CHECK-DAG: "??R<lambda_1>@?0???$TemplateFuncionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?1@XZ"
-auto ValueFromTemplateFuncionWithLocalLambda = TemplateFuncionWithLocalLambda(0);
+// MSVC2013-DAG: "?ValueFromTemplateFunctionWithLocalLambda@@3ULocalType@?2???R<lambda_1>@?0???$TemplateFunctionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?3@XZ@A"
+// MSVC2013-DAG: "?ValueFromTemplateFunctionWithLocalLambda@@3ULocalType@?2???R<lambda_1>@?0???$TemplateFunctionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?3@XZ@A"
+// MSVC2015-DAG: "?ValueFromTemplateFunctionWithLocalLambda@@3ULocalType@?1???R<lambda_1>@?0???$TemplateFunctionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?3@XZ@A"
+// MSVC2015-DAG: "?ValueFromTemplateFunctionWithLocalLambda@@3ULocalType@?1???R<lambda_1>@?0???$TemplateFunctionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?3@XZ@A"
+// CHECK-DAG: "??$TemplateFunctionWithLocalLambda@H@@YA?A?<auto>@@H@Z"
+// CHECK-DAG: "??R<lambda_1>@?0???$TemplateFunctionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?1@XZ"
+auto ValueFromTemplateFunctionWithLocalLambda = TemplateFunctionWithLocalLambda(0);
 
 struct S;
 template <int S::*>

@@ -43,7 +43,7 @@ define i1 @compare_and_call_with_deopt() {
   ret i1 %cmp
 }
 
-; Same functon as above with deopt operand in function f, but comparison is NE
+; Same function as above with deopt operand in function f, but comparison is NE
 define i1 @compare_ne_and_call_with_deopt() {
 ; CHECK-LABEL: @compare_ne_and_call_with_deopt(
 ; CHECK-NEXT:    [[M:%.*]] = call dereferenceable_or_null(24) ptr @malloc(i64 24)

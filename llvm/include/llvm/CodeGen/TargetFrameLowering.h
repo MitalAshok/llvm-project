@@ -231,7 +231,7 @@ public:
   virtual bool enableCFIFixup(MachineFunction &MF) const;
 
   /// Emit CFI instructions that recreate the state of the unwind information
-  /// upon fucntion entry.
+  /// upon function entry.
   virtual void resetCFIToInitialState(MachineBasicBlock &MBB) const {}
 
   /// Replace a StackProbe stub (if any) with the actual probe code inline

@@ -1225,7 +1225,7 @@ static void targetParallelCallback(
       /* outlined function */
       Builder.CreateBitCast(&OutlinedFn, OMPIRBuilder->ParallelTaskPtr),
       /* wrapper function */ NullPtrValue,
-      /* arguments of the outlined funciton*/ Args,
+      /* arguments of the outlined function*/ Args,
       /* number of arguments */ Builder.getInt64(NumCapturedVars)};
 
   FunctionCallee RTLFn =
@@ -6633,7 +6633,7 @@ void OpenMPIRBuilder::createOffloadEntriesAndInfoMetadata(
             dyn_cast<OffloadEntriesInfoManager::OffloadEntryInfoTargetRegion>(
                 E.first)) {
       if (!CE->getID() || !CE->getAddress()) {
-        // Do not blame the entry if the parent funtion is not emitted.
+        // Do not blame the entry if the parent function is not emitted.
         TargetRegionEntryInfo EntryInfo = E.second;
         StringRef FnName = EntryInfo.ParentName;
         if (!M.getNamedValue(FnName))

@@ -19,7 +19,7 @@
 
 namespace llvm {
 namespace SPIRV {
-/// Lowers a builtin funtion call using the provided \p DemangledCall skeleton
+/// Lowers a builtin function call using the provided \p DemangledCall skeleton
 /// and external instruction \p Set.
 ///
 /// \return the lowering success status if the called function is a recognized

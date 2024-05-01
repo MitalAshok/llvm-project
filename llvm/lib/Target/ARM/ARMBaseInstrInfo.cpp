@@ -1059,7 +1059,7 @@ ARMBaseInstrInfo::isCopyInstrImpl(const MachineInstr &MI) const {
   // VMOVRRD is also a copy instruction but it requires
   // special way of handling. It is more complex copy version
   // and since that we are not considering it. For recognition
-  // of such instruction isExtractSubregLike MI interface fuction
+  // of such instruction isExtractSubregLike MI interface function
   // could be used.
   // VORRq is considered as a move only if two inputs are
   // the same register.

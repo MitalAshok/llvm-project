@@ -1182,7 +1182,7 @@ void MicrosoftCXXNameMangler::mangleUnqualifiedName(GlobalDecl GD,
     case DeclarationName::ObjCMultiArgSelector: {
       // This is reachable only when constructing an outlined SEH finally
       // block.  Nothing depends on this mangling and it's used only with
-      // functinos with internal linkage.
+      // functions with internal linkage.
       llvm::SmallString<64> Name;
       mangleSourceName(Name.str());
       break;

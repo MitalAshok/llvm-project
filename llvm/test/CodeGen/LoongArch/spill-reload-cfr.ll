@@ -2,7 +2,7 @@
 ; RUN: llc --mtriple=loongarch32 --mattr=+d < %s | FileCheck %s --check-prefix=LA32
 ; RUN: llc --mtriple=loongarch64 --mattr=+d < %s | FileCheck %s --check-prefix=LA64
 
-;; Check the $fcc* register is spilled before funtion call and then reloaded.
+;; Check the $fcc* register is spilled before function call and then reloaded.
 declare void @foo()
 
 define i1 @load_store_fcc_reg(float %a, i1 %c) {

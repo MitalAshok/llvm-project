@@ -24,7 +24,7 @@ target triple = "aarch64"
 ; function passes run in the following order: FunctionPass1(f1),
 ; FunctionPass2(f1), FunctionPass1(f2), FunctionPass2(f2). Then
 ; FunctionPass1 will not be able to optimize f2, since GlobalsAA will
-; have been invalidated in FuntionPass2(f1).
+; have been invalidated in FunctionPass2(f1).
 
 ; To try and also test this scenario, there is an empty function
 ; before and after the function we're checking so that one of them

@@ -76,7 +76,7 @@ namespace CallingConv {
     Tail = 18,
 
     /// Special calling convention on Windows for calling the Control Guard
-    /// Check ICall funtion. The function takes exactly one argument (address of
+    /// Check ICall function. The function takes exactly one argument (address of
     /// the target function) passed in the first argument register, and has no
     /// return value. All register values are preserved.
     CFGuard_Check = 19,

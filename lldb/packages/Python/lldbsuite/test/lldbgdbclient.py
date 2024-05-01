@@ -65,7 +65,7 @@ class GDBRemoteTestBase(TestBase):
         Assert that the mock server's packet log contains the given packets.
 
         The packet log includes all packets sent by the client and received
-        by the server.  This fuction makes it easy to verify that the client
+        by the server.  This function makes it easy to verify that the client
         sent the expected packets to the server.
 
         The check does not require that the packets be consecutive, but does

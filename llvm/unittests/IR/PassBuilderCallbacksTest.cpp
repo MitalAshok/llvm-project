@@ -667,7 +667,7 @@ TEST_F(ModuleCallbacksTest, InstrumentedSkippedPasses) {
               runAfterAnalysis(Not(HasNameRegex("MockAnalysisHandle")), _))
       .Times(AnyNumber());
 
-  // Register Funtion and Loop version of "test-transform" for testing
+  // Register Function and Loop version of "test-transform" for testing
   PB.registerPipelineParsingCallback(
       [](StringRef Name, FunctionPassManager &FPM,
          ArrayRef<PassBuilder::PipelineElement>) {

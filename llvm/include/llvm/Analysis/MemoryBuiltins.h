@@ -102,7 +102,7 @@ Value *getFreedOperand(const CallBase *CB, const TargetLibraryInfo *TLI);
 bool isRemovableAlloc(const CallBase *V, const TargetLibraryInfo *TLI);
 
 /// Gets the alignment argument for an aligned_alloc-like function, using either
-/// built-in knowledge based on fuction names/signatures or allocalign
+/// built-in knowledge based on function names/signatures or allocalign
 /// attributes. Note: the Value returned may not indicate a valid alignment, per
 /// the definition of the allocalign attribute.
 Value *getAllocAlignment(const CallBase *V, const TargetLibraryInfo *TLI);

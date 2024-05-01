@@ -2201,7 +2201,7 @@ static bool generateLoadStoreInst(const SPIRV::IncomingCall *Call,
   return true;
 }
 
-/// Lowers a builtin funtion call using the provided \p DemangledCall skeleton
+/// Lowers a builtin function call using the provided \p DemangledCall skeleton
 /// and external instruction \p Set.
 namespace SPIRV {
 std::optional<bool> lowerBuiltin(const StringRef DemangledCall,

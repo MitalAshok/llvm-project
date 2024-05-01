@@ -1,4 +1,4 @@
-"""Test the LLDB module cache funcionality."""
+"""Test the LLDB module cache functionality."""
 
 import glob
 import lldb

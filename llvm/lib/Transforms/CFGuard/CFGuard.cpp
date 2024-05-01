@@ -59,7 +59,7 @@ public:
   /// function. The address of the target function is passed to the guard check
   /// function in an architecture-specific register (e.g. ECX on 32-bit X86,
   /// X15 on Aarch64, and R0 on ARM). The guard check function has no return
-  /// value (if the target is invalid, the guard check funtion will raise an
+  /// value (if the target is invalid, the guard check function will raise an
   /// error).
   ///
   /// For example, the following LLVM IR:

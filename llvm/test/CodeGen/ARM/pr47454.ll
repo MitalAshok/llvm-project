@@ -27,7 +27,7 @@ Entry:
     %const = alloca half, align 2
     store half 0xH7C00, ptr %const, align 2
     %arg1 = load half, ptr %const, align 2
-    ; Second arg from fucntion return
+    ; Second arg from function return
     %arg2 = call fastcc half @getConstant()
     ; Arguments should have equivalent mangling
     %result = call fastcc i1 @isEqual(half %arg1, half %arg2)

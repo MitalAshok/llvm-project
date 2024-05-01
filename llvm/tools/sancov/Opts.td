@@ -24,9 +24,9 @@ def print : F<"print", "Print coverage addresses">,
   Group<action_grp>;
 def printCoveragePcs : F<"print-coverage-pcs", "Print coverage instrumentation points addresses.">,
   Group<action_grp>;
-def coveredFunctions : F<"covered-functions", "Print all covered funcions.">,
+def coveredFunctions : F<"covered-functions", "Print all covered functions.">,
   Group<action_grp>;
-def notCoveredFunctions : F<"not-covered-functions", "Print all not covered funcions.">,
+def notCoveredFunctions : F<"not-covered-functions", "Print all not covered functions.">,
   Group<action_grp>;
 def printCoverageStats : F<"print-coverage-stats", "Print coverage statistics.">,
   Group<action_grp>;

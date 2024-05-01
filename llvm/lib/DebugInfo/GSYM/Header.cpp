@@ -83,7 +83,7 @@ llvm::Expected<Header> Header::decode(DataExtractor &Data) {
 }
 
 llvm::Error Header::encode(FileWriter &O) const {
-  // Users must verify the Header is valid prior to calling this funtion.
+  // Users must verify the Header is valid prior to calling this function.
   if (llvm::Error Err = checkForError())
     return Err;
   O.writeU32(Magic);

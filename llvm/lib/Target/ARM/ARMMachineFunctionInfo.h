@@ -146,7 +146,7 @@ class ARMFunctionInfo : public MachineFunctionInfo {
   /// True if the function should sign its return address.
   bool SignReturnAddress = false;
 
-  /// True if the fucntion should sign its return address, even if LR is not
+  /// True if the function should sign its return address, even if LR is not
   /// saved.
   bool SignReturnAddressAll = false;
 

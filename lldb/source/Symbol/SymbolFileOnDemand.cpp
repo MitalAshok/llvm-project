@@ -378,7 +378,7 @@ void SymbolFileOnDemand::FindFunctions(const RegularExpression &regex,
              GetSymbolFileName(), __FUNCTION__);
 
     // Found match in symbol table hydrate debug info and
-    // allow the FindFucntions to go through.
+    // allow the FindFunctions to go through.
     SetLoadDebugInfoEnabled();
   }
   return m_sym_file_impl->FindFunctions(regex, include_inlines, sc_list);
@@ -411,7 +411,7 @@ void SymbolFileOnDemand::FindFunctions(
              GetSymbolFileName(), __FUNCTION__, name);
 
     // Found match in symbol table hydrate debug info and
-    // allow the FindFucntions to go through.
+    // allow the FindFunctions to go through.
     SetLoadDebugInfoEnabled();
   }
   return m_sym_file_impl->FindFunctions(lookup_info, parent_decl_ctx,

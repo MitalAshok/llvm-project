@@ -8,7 +8,7 @@ RUN: llvm-remarkutil yaml2bitstream %p/Inputs/instruction-count-with-dbg-loc.yam
 ; CHECK: path/to/inst2.c:1:2,func2,2
 ; CHECK: path/to/inst3.c:1:2,func3,3
 
-; COUNT-CHECK-LABEL: FuctionWithDebugLoc,NumInstructions
+; COUNT-CHECK-LABEL: FunctionWithDebugLoc,NumInstructions
 ; COUNT-CHECK: path/to/inst.c:func1,1
 ; COUNT-CHECK: path/to/inst2.c:func2,2
 ; COUNT-CHECK: path/to/inst3.c:func3,3

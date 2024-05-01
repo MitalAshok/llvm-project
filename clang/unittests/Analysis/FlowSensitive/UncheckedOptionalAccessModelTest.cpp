@@ -2145,7 +2145,7 @@ TEST_P(UncheckedOptionalAccessTest, OptionalSwap) {
   )");
 }
 
-TEST_P(UncheckedOptionalAccessTest, OptionalReturnedFromFuntionCall) {
+TEST_P(UncheckedOptionalAccessTest, OptionalReturnedFromFunctionCall) {
   ExpectDiagnosticsFor(
       R"(
     #include "unchecked_optional_access_test.h"

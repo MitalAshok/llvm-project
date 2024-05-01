@@ -1,4 +1,4 @@
-"""Test the LLDB module cache funcionality for universal mach-o files."""
+"""Test the LLDB module cache functionality for universal mach-o files."""
 
 import glob
 import lldb

@@ -751,7 +751,7 @@ CGCallee ItaniumCXXABI::EmitLoadOfMemberFunctionPointer(
                                                   "memptr.virtualfn");
       }
     }
-    assert(VirtualFn && "Virtual fuction pointer not created!");
+    assert(VirtualFn && "Virtual function pointer not created!");
     assert((!ShouldEmitCFICheck || !ShouldEmitVFEInfo || !ShouldEmitWPDInfo ||
             CheckResult) &&
            "Check result required but not created!");

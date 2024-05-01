@@ -1215,7 +1215,7 @@ MCObjectFileInfo::getPseudoProbeDescSection(StringRef FuncName) const {
     // for the linker to deduplicate. The duplication, must be from different
     // tranlation unit, can come from:
     //  1. Inline functions defined in header files;
-    //  2. ThinLTO imported funcions;
+    //  2. ThinLTO imported functions;
     //  3. Weak-linkage definitions.
     // Use a concatenation of the section name and the function name as the
     // group name so that descriptor-only groups won't be folded with groups of

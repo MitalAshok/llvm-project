@@ -262,7 +262,7 @@ namespace cwg727 { // cwg727: partial
     template<> int f1<T>();
     template<> int f1<U>();
 
-    // FIXME: Missing diagnostic for fucntion redefinition!
+    // FIXME: Missing diagnostic for function redefinition!
     template<typename> int f2();
     template<> int f2<T>() {}
     template<> int f2<U>() {}

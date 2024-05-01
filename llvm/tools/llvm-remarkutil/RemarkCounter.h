@@ -39,7 +39,7 @@ inline std::string groupByToStr(GroupBy GroupBy) {
   case GroupBy::PER_FUNCTION:
     return "Function";
   case GroupBy::PER_FUNCTION_WITH_DEBUG_LOC:
-    return "FuctionWithDebugLoc";
+    return "FunctionWithDebugLoc";
   case GroupBy::PER_SOURCE:
     return "Source";
   }

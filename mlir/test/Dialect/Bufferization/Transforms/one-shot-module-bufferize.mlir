@@ -667,7 +667,7 @@ func.func @br_in_func(%t: tensor<5xf32>) -> tensor<5xf32> {
 
 // Cyclic call graphs with tensors are not supported by One-Shot Bufferize.
 // However, if a function signature does not have any tensor arguments or
-// results, calls to that function are not seen as an "edge" in the fuction
+// results, calls to that function are not seen as an "edge" in the function
 // call graph.
 
 // CHECK-LABEL: func.func @foo(%{{.*}}: memref<5xf32>) -> memref<5xf32>

@@ -107,7 +107,7 @@ Replace the ``std::set`` usage for ``DeducedScopes``, ``UnresolvedScopes`` and
 ``IdentifiedNamespaces`` with ``std::unordered_set`` and get the benefit
 of the O(1) while inserting/searching, as the order is not important.
 
-### Optimize ``LVNamespaceDeduction::find`` funtion.
+### Optimize ``LVNamespaceDeduction::find`` function.
 **[D125784](https://reviews.llvm.org/D125784#inline-1296195)**
 
 Optimize the ``find`` method to use the proposed code:

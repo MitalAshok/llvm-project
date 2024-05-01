@@ -195,7 +195,7 @@ public:
   // This function is called only in CGBuilderBaseTy::CreateElementBitCast.
   void setElementType(llvm::Type *Ty) {
     assert(hasOffset() &&
-           "this funcion shouldn't be called when there is no offset");
+           "this function shouldn't be called when there is no offset");
     ElementType = Ty;
   }
 

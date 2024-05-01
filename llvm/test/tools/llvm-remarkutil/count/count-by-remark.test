@@ -11,7 +11,7 @@ RUN: llvm-remarkutil count --parser=yaml --count-by=remark-name --group-by=total
 ; CHECKFUNC: func1,3
 ; CHECKFUNC: func2,1
 
-; CHECKFUNCLOC-LABEL: FuctionWithDebugLoc,Count
+; CHECKFUNCLOC-LABEL: FunctionWithDebugLoc,Count
 ; CHECKFUNCLOC: path/to/anno.c:func1,2
 ; CHECKFUNCLOC: path/to/anno.c:func2,1
 ; CHECKFUNCLOC: path/to/anno2.c:func1,1

@@ -937,7 +937,7 @@ static bool mayLoadFromGOTOrConstantPool(MachineInstr &MI) {
 // is constant throughout the body of the function (not including prologue and
 // epilogue). When called with an MI that isn't a store, it returns false.
 // A future improvement can be to check if the store registers are constant
-// throughout the loop rather than throughout the funtion.
+// throughout the loop rather than throughout the function.
 static bool isInvariantStore(const MachineInstr &MI,
                              const TargetRegisterInfo *TRI,
                              const MachineRegisterInfo *MRI) {

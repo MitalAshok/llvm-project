@@ -1029,7 +1029,7 @@ void f(int *x) {
 
 } // namespace cxx17_ifinit__operator_call_in_condition_point
 
-namespace funcion_call_in_condition_point {
+namespace function_call_in_condition_point {
 
 int alwaysTrue() {
   return true;
@@ -1042,9 +1042,9 @@ void f(int *x) {
                     // expected-note@-1 {{Dereference}}
 }
 
-} // namespace funcion_call_in_condition_point
+} // namespace function_call_in_condition_point
 
-namespace funcion_call_negated_in_condition_point {
+namespace function_call_negated_in_condition_point {
 
 int alwaysFalse() {
   return false;
@@ -1057,9 +1057,9 @@ void f(int *x) {
                       // expected-note@-1 {{Dereference}}
 }
 
-} // namespace funcion_call_negated_in_condition_point
+} // namespace function_call_negated_in_condition_point
 
-namespace funcion_call_part_of_logical_expr_in_condition_point {
+namespace function_call_part_of_logical_expr_in_condition_point {
 
 int alwaysFalse() {
   return false;
@@ -1073,4 +1073,4 @@ void f(int *x) {
                       // expected-note@-1 {{Dereference}}
 }
 
-} // namespace funcion_call_part_of_logical_expr_in_condition_point
+} // namespace function_call_part_of_logical_expr_in_condition_point

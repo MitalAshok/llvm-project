@@ -152,7 +152,7 @@ bool X86ArgumentStackSlotPass::runOnMachineFunction(MachineFunction &MF) {
   MachineBasicBlock::iterator MBBI = MBB.begin();
   DebugLoc DL;
   // Emit instruction to copy get stack pointer to a virtual register
-  // and save the instruction to x86 machine functon info. We can get
+  // and save the instruction to x86 machine function info. We can get
   // physical register of ArgBaseReg after register allocation. The
   // stack slot is used to save/restore argument base pointer. We can
   // get the index from the instruction.

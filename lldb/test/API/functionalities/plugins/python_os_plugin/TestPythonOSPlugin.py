@@ -15,7 +15,7 @@ class PluginPythonOSPlugin(TestBase):
     def test_python_os_plugin(self):
         """Test that the Python operating system plugin works correctly"""
         self.build()
-        self.run_python_os_funcionality()
+        self.run_python_os_functionality()
 
     def run_python_os_step(self):
         """Test that the Python operating system plugin works correctly when single stepping a virtual thread"""
@@ -34,7 +34,7 @@ class PluginPythonOSPlugin(TestBase):
             )
             reg_value = reg_value + 1
 
-    def run_python_os_funcionality(self):
+    def run_python_os_functionality(self):
         """Test that the Python operating system plugin works correctly"""
 
         # Set debugger into synchronous mode

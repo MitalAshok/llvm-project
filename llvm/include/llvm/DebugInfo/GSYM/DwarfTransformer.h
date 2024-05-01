@@ -65,7 +65,7 @@ private:
   /// Handle any DIE (debug info entry) from the DWARF.
   ///
   /// This function will find all DW_TAG_subprogram DIEs that convert them into
-  /// GSYM FuntionInfo objects and add them to the GsymCreator supplied during
+  /// GSYM FunctionInfo objects and add them to the GsymCreator supplied during
   /// construction. The DIE and all its children will be recursively parsed
   /// with calls to this function.
   ///
