@@ -9440,7 +9440,7 @@ bool SpecialMemberDeletionInfo::shouldDeleteForSubobjectCall(
   CXXMethodDecl *Decl = SMOR.getMethod();
   FieldDecl *Field = Subobj.dyn_cast<FieldDecl*>();
 
-  int DiagKind = -1;
+  int DiagKind;
 
   if (SMOR.getKind() == Sema::SpecialMemberOverloadResult::NoMemberOrDeleted) {
     if (CSM == Sema::CXXDefaultConstructor && Field &&
@@ -9451,11 +9451,10 @@ bool SpecialMemberDeletionInfo::shouldDeleteForSubobjectCall(
       //     constructor and no variant member of X has a default member
       //     initializer
       const auto *RD = cast<CXXRecordDecl>(Field->getParent());
-      if (!RD->hasInClassInitializer())
-        DiagKind = !Decl ? 0 : 1;
-    } else {
-      DiagKind = !Decl ? 0 : 1;
+      if (RD->hasInClassInitializer())
+        return false;
     }
+    DiagKind = !Decl ? 0 : 1;
   } else if (SMOR.getKind() == Sema::SpecialMemberOverloadResult::Ambiguous)
     DiagKind = 2;
   else if (!isAccessible(Subobj, Decl))
@@ -9474,15 +9473,13 @@ bool SpecialMemberDeletionInfo::shouldDeleteForSubobjectCall(
       //     constructor and no variant member of X has a default member
       //     initializer
       const auto *RD = cast<CXXRecordDecl>(Field->getParent());
-      if (!RD->hasInClassInitializer())
-        DiagKind = 4;
-    } else {
-      DiagKind = 4;
+      if (RD->hasInClassInitializer())
+        return false;
     }
-  }
-
-  if (DiagKind == -1)
+    DiagKind = 4;
+  } else {
     return false;
+  }
 
   if (Diagnose) {
     if (Field) {
