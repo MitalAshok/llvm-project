@@ -5522,8 +5522,8 @@ static bool isAtLeastAsSpecializedAs(Sema &S, SourceLocation Loc,
 /// function templates.
 ///
 /// \param NumCallArguments1 The number of arguments in the call to FT1, used
-/// only when \c TPOC is \c TPOC_Call. Does not include the object argument when
-/// calling a member function.
+/// only when \c TPOC is \c TPOC_Call. Should include the object argument when
+/// calling a member function or constructor.
 ///
 /// \param RawObj1Ty The type of the object parameter of FT1 if a member
 /// function only used if \c TPOC is \c TPOC_Call and FT1 is a Function
@@ -5567,8 +5567,8 @@ FunctionTemplateDecl *Sema::getMoreSpecializedTemplate(
     //   X(M), described below, inserted in its function parameter list.
     //
     // Note that we interpret "that is a member function" as
-    // "that is a member function with no expicit object argument".
-    // Otherwise the ordering rules for methods with expicit objet arguments
+    // "that is a member function with no explicit object argument".
+    // Otherwise the ordering rules for methods with explicit object arguments
     // against anything else make no sense.
     ShouldConvert1 = Method1 && !Method1->isExplicitObjectMemberFunction();
     ShouldConvert2 = Method2 && !Method2->isExplicitObjectMemberFunction();
@@ -5592,11 +5592,6 @@ FunctionTemplateDecl *Sema::getMoreSpecializedTemplate(
                                               IsRValRef1);
       Args2.push_back(Obj2Ty);
     }
-    size_t NumComparedArguments = NumCallArguments1;
-    // Either added an argument above or the prototype includes an explicit
-    // object argument we need to count
-    if (Method1)
-      ++NumComparedArguments;
 
     Args1.insert(Args1.end(), Proto1->param_type_begin(),
                  Proto1->param_type_end());
@@ -5606,8 +5601,8 @@ FunctionTemplateDecl *Sema::getMoreSpecializedTemplate(
     // C++ [temp.func.order]p5:
     //   The presence of unused ellipsis and default arguments has no effect on
     //   the partial ordering of function templates.
-    Args1.resize(std::min(Args1.size(), NumComparedArguments));
-    Args2.resize(std::min(Args2.size(), NumComparedArguments));
+    Args1.truncate(std::min<size_t>(Args1.size(), NumCallArguments1));
+    Args2.truncate(std::min<size_t>(Args2.size(), NumCallArguments1));
 
     if (Reversed)
       std::reverse(Args2.begin(), Args2.end());

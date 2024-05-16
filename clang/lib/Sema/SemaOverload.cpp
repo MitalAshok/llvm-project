@@ -6969,6 +6969,9 @@ void Sema::AddOverloadCandidate(
   Candidate.IsADLCandidate = IsADLCandidate;
   Candidate.IgnoreObjectArgument = false;
   Candidate.ExplicitCallArguments = Args.size();
+  // Add implicit object argument
+  if (Constructor)
+    ++Candidate.ExplicitCallArguments;
 
   // Explicit functions are not actually candidates at all if we're not
   // allowing them in this context, but keep them around so we can point
@@ -7542,7 +7545,8 @@ Sema::AddMethodCandidate(CXXMethodDecl *Method, DeclAccessPair FoundDecl,
       CandidateSet.getRewriteInfo().getRewriteKind(Method, PO);
   Candidate.IsSurrogate = false;
   Candidate.IgnoreObjectArgument = false;
-  Candidate.ExplicitCallArguments = Args.size();
+  // +1 for object argument
+  Candidate.ExplicitCallArguments = Args.size() + 1u;
 
   unsigned NumParams = Method->getNumExplicitParams();
   unsigned ExplicitOffset = Method->isExplicitObjectMemberFunction() ? 1 : 0;
@@ -7714,7 +7718,8 @@ void Sema::AddMethodTemplateCandidate(
     Candidate.IgnoreObjectArgument =
         cast<CXXMethodDecl>(Candidate.Function)->isStatic() ||
         ObjectType.isNull();
-    Candidate.ExplicitCallArguments = Args.size();
+    // +1 for object argument
+    Candidate.ExplicitCallArguments = Args.size() + 1u;
     if (Result == TemplateDeductionResult::NonDependentConversionFailure)
       Candidate.FailureKind = ovl_fail_bad_conversion;
     else {
@@ -7801,10 +7806,10 @@ void Sema::AddTemplateOverloadCandidate(
     Candidate.IsADLCandidate = IsADLCandidate;
     // Ignore the object argument if there is one, since we don't have an object
     // type.
+    bool IsMethod = isa<CXXMethodDecl>(Candidate.Function);
     Candidate.IgnoreObjectArgument =
-        isa<CXXMethodDecl>(Candidate.Function) &&
-        !isa<CXXConstructorDecl>(Candidate.Function);
-    Candidate.ExplicitCallArguments = Args.size();
+        IsMethod && !isa<CXXConstructorDecl>(Candidate.Function);
+    Candidate.ExplicitCallArguments = Args.size() + IsMethod;
     if (Result == TemplateDeductionResult::NonDependentConversionFailure)
       Candidate.FailureKind = ovl_fail_bad_conversion;
     else {

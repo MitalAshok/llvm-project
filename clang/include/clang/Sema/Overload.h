@@ -910,8 +910,9 @@ class Sema;
     /// Actually an OverloadFailureKind.
     unsigned char FailureKind;
 
-    /// The number of call arguments that were explicitly provided,
-    /// to be used while performing partial ordering of function templates.
+    /// The number of call arguments that were explicitly provided including any
+    /// object argument, to be used while performing partial ordering of
+    /// function templates.
     unsigned ExplicitCallArguments;
 
     union {
