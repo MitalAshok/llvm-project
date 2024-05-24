@@ -1739,7 +1739,7 @@ static void maybeDiagnoseUTF8Homoglyph(DiagnosticsEngine &Diags, uint32_t C,
 static void diagnoseInvalidUnicodeCodepointInIdentifier(
     DiagnosticsEngine &Diags, const LangOptions &LangOpts, uint32_t CodePoint,
     CharSourceRange Range, bool IsFirst) {
-  if (isASCII(CodePoint))
+  if (isASCIICodePoint(CodePoint))
     return;
 
   bool IsExtension;
@@ -1772,7 +1772,7 @@ bool Lexer::tryConsumeIdentifierUCN(const char *&CurPtr, unsigned Size,
   }
   bool IsExtension = false;
   if (!isAllowedIDChar(CodePoint, LangOpts, IsExtension)) {
-    if (isASCII(CodePoint) || isUnicodeWhitespace(CodePoint))
+    if (isASCIICodePoint(CodePoint) || isUnicodeWhitespace(CodePoint))
       return false;
     if (!isLexingRawMode() && !ParsingPreprocessorDirective &&
         !PP->isPreprocessedOutput())
@@ -1824,7 +1824,7 @@ bool Lexer::tryConsumeIdentifierUTF8Char(const char *&CurPtr, Token &Result) {
   bool IsExtension = false;
   if (!isAllowedIDChar(static_cast<uint32_t>(CodePoint), LangOpts,
                        IsExtension)) {
-    if (isASCII(CodePoint) || isUnicodeWhitespace(CodePoint))
+    if (isASCIICodePoint(CodePoint) || isUnicodeWhitespace(CodePoint))
       return false;
 
     if (!isLexingRawMode() && !ParsingPreprocessorDirective &&

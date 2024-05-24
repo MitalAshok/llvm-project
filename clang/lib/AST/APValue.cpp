@@ -660,7 +660,7 @@ static bool TryPrintAsStringLiteral(raw_ostream &Out,
     if (!Val.isInt())
       return false;
     int64_t Char64 = Val.getInt().getExtValue();
-    if (!isASCII(Char64))
+    if (!isASCIICodePoint(Char64))
       return false; // Bye bye, see you in integers.
     auto Ch = static_cast<unsigned char>(Char64);
     // The diagnostic message is 'quoted'
