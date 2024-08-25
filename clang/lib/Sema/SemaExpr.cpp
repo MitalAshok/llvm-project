@@ -25,6 +25,7 @@
 #include "clang/AST/ExprCXX.h"
 #include "clang/AST/ExprObjC.h"
 #include "clang/AST/ExprOpenMP.h"
+#include "clang/AST/IgnoreExpr.h"
 #include "clang/AST/MangleNumberingContext.h"
 #include "clang/AST/OperationKinds.h"
 #include "clang/AST/ParentMapContext.h"
@@ -17463,11 +17464,25 @@ static void RemoveNestedImmediateInvocation(
     ExprResult TransformInitializer(Expr *Init, bool NotCopyInit) {
       if (!Init)
         return Init;
-      /// ConstantExpr are the first layer of implicit node to be removed so if
-      /// Init isn't a ConstantExpr, no ConstantExpr will be skipped.
-      if (auto *CE = dyn_cast<ConstantExpr>(Init))
-        if (CE->isImmediateInvocation())
-          RemoveImmediateInvocation(CE);
+      // TransformInitializer skips through many nodes including ConstantExpr
+      // so we need to find them manually. The ConstantExpr can be
+      // wrapped inside something else like an implicit or explicit cast.
+      IgnoreExprNodes(Init, [&](Expr *E) {
+        if (auto *CE = dyn_cast<ConstantExpr>(E)) {
+          if (CE->isImmediateInvocation())
+            RemoveImmediateInvocation(CE);
+          return CE->getSubExpr();
+        }
+        // Only do a single step at a time because we might miss the
+        // ConstantExpr.
+        if (Expr *SingleStep = IgnoreParensSingleStep(E); SingleStep != E)
+          return SingleStep;
+        if (Expr *SingleStep = IgnoreImplicitCastsExtraSingleStep(E); SingleStep != E)
+          return SingleStep;
+        if (Expr *SingleStep = IgnoreCastsSingleStep(E); SingleStep != E)
+          return SingleStep;
+        return E;
+      });
       return Base::TransformInitializer(Init, NotCopyInit);
     }
     ExprResult TransformDeclRefExpr(DeclRefExpr *E) {
